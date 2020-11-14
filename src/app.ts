@@ -1,5 +1,5 @@
 import express from "express";
-import { medicRouter } from "./medic/infraestructure/medic.routes";
+import { medicRouter } from "./medic/infraestructure/routes/medic.routes";
 
 const app = express();
 app.use(express.json());

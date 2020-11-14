@@ -1,25 +1,12 @@
-import { MedicUseCase } from "../application/medic.usecase";
+// Entities
 import { Medic } from "../domain/entities/medic.entity";
-export class MedicController {
-  constructor(private readonly medicUseCase: MedicUseCase) {}
 
-  async insert(medic: Medic) {
-    return this.medicUseCase.insert(medic);
-  }
+// Shared
+import {BaseController} from "../../base-crud/infraestructure/controllers/base-controller";
+import { IBaseService } from "../../base-crud/application/base-service-interface";
 
-  async getAll(isActive: boolean) {
-    return this.medicUseCase.getAll(isActive);
-  }
-
-  async getOne(id: string | number) {
-    return this.medicUseCase.getOne(id);
-  }
-
-  async update(id: string | number, medic: Medic) {
-    return this.medicUseCase.update(id, medic);
-  }
-
-  async delete(id: string | number) {
-    return this.medicUseCase.delete(id);
+export class MedicController extends BaseController<Medic, Medic> {
+  constructor(service: IBaseService<Medic, Medic>) {
+    super(service);
   }
 }

@@ -25,7 +25,9 @@ export abstract class BaseController <T, U> implements IBaseController {
                 params: { id },
             } = req;
 
-            const response = await this.baseService.delete(+id);
+
+
+            const response = await this.baseService.delete(id);
             res.json(response);
         }
         catch (error) {
@@ -48,7 +50,7 @@ export abstract class BaseController <T, U> implements IBaseController {
                 params: { id },
             } = req;
 
-            const response = await this.baseService.getById(+id);
+            const response = await this.baseService.getById(id);
             res.json(response);
         } catch (error) {
             next(error);
@@ -62,7 +64,7 @@ export abstract class BaseController <T, U> implements IBaseController {
                 params: { id },
             } = req;
 
-            const response = await this.baseService.update(+id, body);
+            const response = await this.baseService.update(id, body);
             res.json(response);
         } catch (error) {
             next(error);

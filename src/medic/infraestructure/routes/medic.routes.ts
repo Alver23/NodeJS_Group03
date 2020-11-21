@@ -10,6 +10,8 @@ const medicController = new MedicController(medicUseCase);
 // Shared
 import { baseRouter } from "../../../base-crud/infraestructure/router/base-router";
 
+// DTO's
+import { MedicDto } from "../dto/driver";
 
 const basePath = '/medics';
-export const medicRouter = baseRouter(basePath, medicController);
+export const medicRouter = baseRouter(basePath, medicController, MedicDto, MedicDto);

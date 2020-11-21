@@ -18,9 +18,15 @@
   },
   "homepage": "https://github.com/cursosdevfull/NodeJS_Group03#readme",
   "dependencies": {
+    "@hapi/boom": "^9.1.0",
+    "class-transformer": "^0.3.1",
+    "class-validator": "^0.12.2",
+    "es6-shim": "^0.35.6",
     "express": "^4.17.1",
+    "iterare": "^1.2.1",
     "joi": "^17.3.0",
     "mongoose": "^5.10.14",
+    "reflect-metadata": "^0.1.13",
     "yenv": "^2.1.1"
   },
   "devDependencies": {

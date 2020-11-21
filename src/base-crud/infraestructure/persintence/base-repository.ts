@@ -14,6 +14,7 @@ export default abstract class GenericDatabaseRepository<K extends Model<any>, T,
     }
 
     async deleteOne(id: string | number): Promise<U> {
+        console.log('id', id);
         return this.updateOne(id, { isActive: false } as any);
     }
 

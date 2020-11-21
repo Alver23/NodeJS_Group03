@@ -12,15 +12,16 @@ export abstract class BaseService<T, U> implements IBaseService<T, U> {
     }
 
     async delete(id: number | string): Promise<U> {
+        console.log('BaseService id', id)
         return this.repository.deleteOne(id);
     }
 
     async getAll(filters = {}): Promise<U[]> {
-        return this.repository.findAll(filters);
+        return this.repository.findAll({...filters, isActive: true});
     }
 
-    async getByPage(filter: any = {}, page: number, pageSize: number): Promise<PaginatorResponse<U>> {
-        return this.repository.paginator(filter, page, pageSize)
+    async getByPage(filters: any = {}, page: number, pageSize: number): Promise<PaginatorResponse<U>> {
+        return this.repository.paginator({...filters, isActive: true}, page, pageSize)
     }
 
     async getById(id: number | string): Promise<U> {

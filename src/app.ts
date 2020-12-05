@@ -2,20 +2,24 @@
 import 'es6-shim';
 import 'reflect-metadata';
 import express from "express";
-import { medicRouter } from "./medic/infraestructure/routes/medic.routes";
-import { driverRouter } from "./driver/infraestructure/routes/driver";
+
+// RoutesConfig
+import { RouteConfig } from "./api/routes";
 
 // Middlewares
-import { wrapError, errorHandler } from "./shared/infraestructure/middlewares/error-handler";
+import { addResponseJsonToResponse } from "./shared/infraestructure/middlewares/response";
+import { errorHandler } from "./shared/infraestructure/middlewares/error-handler";
 
 const app = express();
+const routes = new RouteConfig(app);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(addResponseJsonToResponse.handler())
 
-medicRouter(app);
-driverRouter(app);
+routes.publicRoutes();
+routes.privateRoutes();
 
-app.use(wrapError);
-app.use(errorHandler);
+app.use(errorHandler.wrapperError());
+app.use(errorHandler.handler());
 
 export default app;
